@@ -1,24 +1,42 @@
 import React, { useState } from 'react';
 
 const Keyboard = () => {
-  // Example of a QWERTY layout
-  const keys = [
-    ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
-    ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
-    ['Z', 'X', 'C', 'V', 'B', 'N', 'M'],
-  ];
+  // Layout presets
+  const layouts = {
+    qwerty: [
+      ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
+      ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
+      ['Z', 'X', 'C', 'V', 'B', 'N', 'M'],
+    ],
+    azerty: [
+      ['A', 'Z', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
+      ['Q', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M'],
+      ['W', 'X', 'C', 'V', 'B', 'N'],
+    ],
+  };
 
-  // State to track the selected key
+  const [keys, setKeys] = useState(layouts.qwerty); // Default to QWERTY layout
   const [selectedKey, setSelectedKey] = useState(null);
 
-  // Handle key click
   const handleKeyClick = (key) => {
     setSelectedKey(key);
   };
 
+  const handleLayoutChange = (e) => {
+    const selectedLayout = e.target.value;
+    setKeys(layouts[selectedLayout]);
+  };
+
   return (
     <div style={styles.keyboard}>
-      <h3>Selected Key: {selectedKey || "None"}</h3>
+      <h3>Selected Key: {selectedKey || 'None'}</h3>
+
+      {/* Layout selection dropdown */}
+      <select onChange={handleLayoutChange}>
+        <option value="qwerty">QWERTY</option>
+        <option value="azerty">AZERTY</option>
+      </select>
+
       {keys.map((row, rowIndex) => (
         <div key={rowIndex} style={styles.row}>
           {row.map((key, keyIndex) => (
@@ -28,8 +46,6 @@ const Keyboard = () => {
                 ...styles.key,
                 backgroundColor: selectedKey === key ? '#c0c0c0' : '#e0e0e0',
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#d3d3d3')}
-              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = selectedKey === key ? '#c0c0c0' : '#e0e0e0')}
               onClick={() => handleKeyClick(key)}
             >
               {key}
@@ -56,20 +72,17 @@ const styles = {
     display: 'inline-flex',
     justifyContent: 'center',
     alignItems: 'center',
-    width: '50px',  // Increased width for better visibility
-    height: '50px', // Increased height for better visibility
+    width: '50px',
+    height: '50px',
     margin: '5px',
     border: '2px solid #333',
-    borderRadius: '8px', // Added rounded corners
+    borderRadius: '8px',
     backgroundColor: '#e0e0e0',
-    fontSize: '18px', // Increased font size
+    fontSize: '18px',
     fontWeight: 'bold',
     color: '#333',
     cursor: 'pointer',
-    transition: 'background-color 0.2s ease', // Added smooth hover effect
-  },
-  keyHover: {
-    backgroundColor: '#d3d3d3', // Hover color
+    transition: 'background-color 0.2s ease',
   },
 };
 

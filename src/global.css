@@ -15,3 +15,12 @@ h1, h2, h3 {
   margin: 0 auto;
   padding: 20px;
 }
+
+@media (max-width: 600px) {
+  .container {
+    padding: 10px;
+  }
+  .keyboard {
+    width: 100%;
+  }
+}
