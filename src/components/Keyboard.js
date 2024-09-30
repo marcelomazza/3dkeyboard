@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Keyboard = () => {
   // Example of a QWERTY layout
@@ -8,12 +8,28 @@ const Keyboard = () => {
     ['Z', 'X', 'C', 'V', 'B', 'N', 'M'],
   ];
 
+  // State to track the selected key
+  const [selectedKey, setSelectedKey] = useState(null);
+
+  // Handle key click
+  const handleKeyClick = (key) => {
+    setSelectedKey(key);
+  };
+
   return (
     <div style={styles.keyboard}>
+      <h3>Selected Key: {selectedKey || "None"}</h3>
       {keys.map((row, rowIndex) => (
         <div key={rowIndex} style={styles.row}>
           {row.map((key, keyIndex) => (
-            <div key={keyIndex} style={styles.key}>
+            <div
+              key={keyIndex}
+              style={{
+                ...styles.key,
+                backgroundColor: selectedKey === key ? '#d3d3d3' : '#f0f0f0',
+              }}
+              onClick={() => handleKeyClick(key)}
+            >
               {key}
             </div>
           ))}
