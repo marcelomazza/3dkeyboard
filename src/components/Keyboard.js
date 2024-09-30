@@ -26,8 +26,10 @@ const Keyboard = () => {
               key={keyIndex}
               style={{
                 ...styles.key,
-                backgroundColor: selectedKey === key ? '#d3d3d3' : '#f0f0f0',
+                backgroundColor: selectedKey === key ? '#c0c0c0' : '#e0e0e0',
               }}
+              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#d3d3d3')}
+              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = selectedKey === key ? '#c0c0c0' : '#e0e0e0')}
               onClick={() => handleKeyClick(key)}
             >
               {key}
@@ -54,13 +56,20 @@ const styles = {
     display: 'inline-flex',
     justifyContent: 'center',
     alignItems: 'center',
-    width: '40px',
-    height: '40px',
+    width: '50px',  // Increased width for better visibility
+    height: '50px', // Increased height for better visibility
     margin: '5px',
-    border: '1px solid #000',
-    borderRadius: '4px',
-    backgroundColor: '#f0f0f0',
+    border: '2px solid #333',
+    borderRadius: '8px', // Added rounded corners
+    backgroundColor: '#e0e0e0',
+    fontSize: '18px', // Increased font size
+    fontWeight: 'bold',
+    color: '#333',
     cursor: 'pointer',
+    transition: 'background-color 0.2s ease', // Added smooth hover effect
+  },
+  keyHover: {
+    backgroundColor: '#d3d3d3', // Hover color
   },
 };
 
