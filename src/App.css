@@ -2,31 +2,28 @@ body {
   font-family: sans-serif;
 }
 
-.keyboard-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  justify-content: center;
-  margin: 20px auto;
-  width: 60%;
+.keyboard {
+  max-width: 900px; /* Set a maximum width for the entire keyboard */
+  margin: 0 auto;
 }
 
 .keyboard-row {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr); /* Adjust depending on layout */
-  gap: 10px;
+  display: flex;
+  justify-content: center; /* Center all keys within the row */
+  gap: 5px; /* Adjusted spacing between keys */
+  margin-bottom: 10px;
 }
 
 .key {
   background-color: #f3f3f3;
-  padding: 20px;
+  padding: 15px 10px; /* Adjust padding for a more compact key size */
   text-align: center;
   border: 1px solid #ccc;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 14px;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  width: auto; /* Automatic width for standard keys */
+  flex: 0 0 auto;
 }
 
 .key:hover {
