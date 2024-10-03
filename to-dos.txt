@@ -1,0 +1,35 @@
+Main To-Do List:
+✅ Set up a flexible grid layout for displaying keys.
+⏳ Architect the layout system to support both predefined and custom layouts.
+⏳ Create a selection screen for predefined vs. custom layout options.
+⏳ Create a unified data structure for key layouts.
+⏳ Define a central layout-driven rendering logic for layouts.
+⏳ Implement predefined layout loading from a configuration file.
+⏳ Implement custom layout creation with a blank or minimal grid.
+⏳ Add functionality to switch between layouts during editing.
+⏳ Align keys to match a standard keyboard layout (e.g., QWERTY).
+⏳ Add special keys with proper sizes (Shift, Enter, Space).
+⏳ Implement drag-and-drop functionality for rearranging keys.
+⏳ Add functionality to customize key attributes (label, color, font).
+⏳ Allow users to define different keyboard sizes (60%, 65%, 75%, etc.).
+⏳ Support non-standard layouts and custom key configurations.
+⏳ Add functionality to save and load custom layouts.
+⏳ Improve the layout to support realistic keyboard arrangements.
+⏳ Implement 3D visualization for the keyboard layout.
+
+Sub To-Do List for To-Do 2: Architect the Layout System
+✅ 2.1. Create a centralized layout model that handles both predefined and custom layouts.
+✅ 2.2. Set up predefined layout loading from a data structure.
+⏳ 2.3. Plan and implement dynamic key addition for custom layouts.
+⏳ 2.4. Ensure layout data can be easily updated (add, remove, or modify keys).
+⏳ 2.5. Unify the rendering logic for both predefined and custom layouts.
+⏳ 2.6. Handle transitions between predefined and custom layouts smoothly.
+⏳ 2.7. Test the layout system with both predefined and custom layouts to ensure flexibility.
+
+Sub-Task List for 2.3: Dynamic Key Addition for Custom Layouts
+2.3.1 ⏳ Enable "Edit Mode" where users can toggle between viewing and editing the layout.
+2.3.2 ⏳ Create a Key Addition Panel with fields for key label, width, and row position.
+2.3.3 ⏳ Implement the "Add Key" button to dynamically place keys in the layout.
+2.3.4 ⏳ Optional: Add drag-and-drop functionality for repositioning keys.
+2.3.5 ⏳ Provide visual feedback for errors (e.g., overlapping keys, layout limits).
+2.3.6 ⏳ Allow key editing and deletion via clicking on the keys in Edit Mode.
