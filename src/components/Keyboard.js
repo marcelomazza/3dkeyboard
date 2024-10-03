@@ -1,30 +1,27 @@
 import React from 'react';
 
-const Keyboard = ({ layout, onKeySelect, selectedKey }) => {
+// Create a simple Key component for now
+const KeyComponent = ({ label }) => {
   return (
-    <div className="keyboard" style={{ position: 'relative', width: '100%', height: '180px' }}>
-      {layout.map((key) => (
-        <button
-          key={key.id}
-          className={`key ${selectedKey && selectedKey.id === key.id ? 'selected' : ''}`}
-          style={{
-            position: 'absolute',
-            left: `${key.x * 40}px`,
-            top: `${key.y * 60}px`,
-            width: `${(key.width || 1) * 35}px`,
-            height: '35px',
-            backgroundColor: key.color,
-            color: 'white',
-            border: selectedKey && selectedKey.id === key.id ? '2px solid white' : 'none',
-            borderRadius: '5px',
-            cursor: 'pointer',
-            boxShadow: selectedKey && selectedKey.id === key.id ? '0 0 10px rgba(255,255,255,0.5)' : 'none',
-            transition: 'all 0.3s ease',
-          }}
-          onClick={() => onKeySelect(key.id)}
-        >
-          {key.label}
-        </button>
+    <div className="key">
+      {label}
+    </div>
+  );
+};
+
+const Keyboard = () => {
+  const keys = [
+    ['Esc', 'F1', 'F2', 'F3', 'F4'],
+    ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
+    ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
+    ['Z', 'X', 'C', 'V', 'B', 'N', 'M'],
+    ['Space']
+  ];
+
+  return (
+    <div className="keyboard-grid">
+      {keys.flat().map((keyLabel, index) => (
+        <KeyComponent key={index} label={keyLabel} />
       ))}
     </div>
   );
