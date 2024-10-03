@@ -27,8 +27,8 @@ Sub To-Do List for To-Do 2: Architect the Layout System
 ⏳ 2.7. Test the layout system with both predefined and custom layouts to ensure flexibility.
 
 Sub-Task List for 2.3: Dynamic Key Addition for Custom Layouts
-2.3.1 ⏳ Enable "Edit Mode" where users can toggle between viewing and editing the layout.
-2.3.2 ⏳ Create a Key Addition Panel with fields for key label, width, and row position.
+2.3.1 ✅ Enable "Edit Mode" where users can toggle between viewing and editing the layout.
+2.3.2 ✅ Create a Key Addition Panel with fields for key label, width, and row position.
 2.3.3 ⏳ Implement the "Add Key" button to dynamically place keys in the layout.
 2.3.4 ⏳ Optional: Add drag-and-drop functionality for repositioning keys.
 2.3.5 ⏳ Provide visual feedback for errors (e.g., overlapping keys, layout limits).
