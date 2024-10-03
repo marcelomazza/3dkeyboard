@@ -38,3 +38,29 @@ body {
 .key:hover {
   background-color: #ddd;
 }
+
+/* Key Addition Panel */
+.key-addition-panel {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  display: inline-block;
+}
+
+.key-addition-panel label {
+  display: block;
+  margin: 10px 0;
+}
+
+.key-preview {
+  margin-top: 15px;
+  text-align: center;
+}
+
+/* Align keys within the preview row */
+.key-preview .keyboard-row {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
