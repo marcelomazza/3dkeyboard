@@ -3,12 +3,18 @@ body {
 }
 
 .keyboard-grid {
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
+  display: flex;
+  flex-direction: column;
   gap: 10px;
   justify-content: center;
   margin: 20px auto;
   width: 60%;
+}
+
+.keyboard-row {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr); /* Adjust depending on layout */
+  gap: 10px;
 }
 
 .key {
@@ -20,6 +26,7 @@ body {
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  width: auto; /* Automatic width for standard keys */
 }
 
 .key:hover {
