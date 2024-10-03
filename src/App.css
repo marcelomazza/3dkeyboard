@@ -64,3 +64,20 @@ body {
   justify-content: center;
   gap: 5px;
 }
+
+/*
+.layout-view {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.keyboard-2d-view {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.keyboard-3d-view {
+  flex: 1;
+  height: 500px; *//* You can adjust the height as needed */
+/*}*/
