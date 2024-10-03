@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import layoutModel from '../models/layoutModel';
-import KeyComponent from './KeyComponent';
-import KeyAdditionPanel from './KeyAdditionPanel';
+import layoutModel from '../models/layoutModel'; 
+import KeyComponent from './KeyComponent'; 
+import KeyAdditionPanel from './KeyAdditionPanel'; 
 
-const Keyboard = ({ layoutType = 'qwerty' }) => {
-  const [isEditMode, setIsEditMode] = useState(false);
-  const [layout, setLayout] = useState(layoutModel.getLayout(layoutType));
+const Keyboard = () => {
+  const [isEditMode, setIsEditMode] = useState(false); 
+  const [layoutType, setLayoutType] = useState('qwerty'); // Track the selected layout
+  const [layout, setLayout] = useState(layoutModel.getLayout(layoutType)); // Track current layout
 
   const toggleEditMode = () => {
     setIsEditMode(!isEditMode);
@@ -16,12 +17,28 @@ const Keyboard = ({ layoutType = 'qwerty' }) => {
     setLayout([...layoutModel.getLayout('custom')]); // Update the layout state after adding a key
   };
 
-  const rows = [1, 2, 3, 4, 5, 6];
+  const handleLayoutChange = (e) => {
+    const selectedLayout = e.target.value;
+    setLayoutType(selectedLayout); // Update the selected layout
+    setLayout(layoutModel.getLayout(selectedLayout)); // Load the selected layout
+  };
+
+  const rows = [1, 2, 3, 4, 5, 6]; 
+
   return (
     <div className="keyboard-container">
       <button onClick={toggleEditMode}>
         {isEditMode ? 'Switch to View Mode' : 'Switch to Edit Mode'}
       </button>
+
+      <div>
+        <label>Choose Layout: </label>
+        <select onChange={handleLayoutChange} value={layoutType}>
+          <option value="qwerty">QWERTY</option>
+          <option value="dvorak">Dvorak</option>
+          <option value="custom">Custom</option>
+        </select>
+      </div>
 
       {isEditMode && <KeyAdditionPanel onAddKey={handleAddKey} />}
 
@@ -29,11 +46,11 @@ const Keyboard = ({ layoutType = 'qwerty' }) => {
         {rows.map(rowNumber => (
           <div className="keyboard-row" key={rowNumber}>
             {layout.filter(key => key.row === rowNumber).map((key, index) => (
-              <KeyComponent
-                key={index}
-                label={key.label}
-                width={key.width}
-                isEditMode={isEditMode}
+              <KeyComponent 
+                key={index} 
+                label={key.label} 
+                width={key.width} 
+                isEditMode={isEditMode} 
               />
             ))}
           </div>
