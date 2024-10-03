@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import layoutModel from '../models/layoutModel'; // Import the centralized layout model
 
-const KeyComponent = ({ label, width }) => {
+const KeyComponent = ({ label, width, isEditMode }) => {
   return (
-    <div 
-      className="key" 
+    <div
+      className={`key ${isEditMode ? 'editable' : ''}`}
       style={{ flex: `0 0 ${width * 60}px` }} // Adjust width dynamically based on key size
     >
       {label}
@@ -13,19 +13,36 @@ const KeyComponent = ({ label, width }) => {
 };
 
 const Keyboard = ({ layoutType = 'qwerty' }) => {
+  const [isEditMode, setIsEditMode] = useState(false); // Track whether we are in edit mode
   const layout = layoutModel.getLayout(layoutType); // Get the layout (predefined or custom)
 
-  const rows = [1, 2, 3, 4, 5, 6]; // Total number of rows in the layout
+  const toggleEditMode = () => {
+    setIsEditMode(!isEditMode); // Toggle between View and Edit modes
+  };
+
+  // Group keys by row
+  const rows = [1, 2, 3, 4, 5, 6];
   return (
-    <>
-      {rows.map(row => (
-        <div className="keyboard-row" key={row}>
-          {layout.filter(key => key.row === row).map((key, index) => (
-            <KeyComponent key={index} label={key.label} width={key.width} />
-          ))}
-        </div>
-      ))}
-    </>
+    <div className="keyboard-container">
+      <button onClick={toggleEditMode}>
+        {isEditMode ? 'Switch to View Mode' : 'Switch to Edit Mode'}
+      </button>
+
+      <div className="keyboard">
+        {rows.map((rowNumber) => (
+          <div className="keyboard-row" key={rowNumber}>
+            {layout.filter(key => key.row === rowNumber).map((key, index) => (
+              <KeyComponent
+                key={index}
+                label={key.label}
+                width={key.width}
+                isEditMode={isEditMode}
+              />
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };
 
